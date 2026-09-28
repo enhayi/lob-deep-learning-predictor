@@ -147,51 +147,10 @@ pytest tests/ -v
 
 ---
 
-## 5. Showcasing on Your Portfolio (Streamlit + GitHub Pages)
-
-### Step 1: Push Code to GitHub
-```bash
-git init
-git add .
-git commit -m "feat: complete LOB deep learning predictor and dashboard"
-git branch -M main
-git remote add origin https://github.com/<your-username>/lob-deep-learning-predictor.git
-git push -u origin main
-```
-
-### Step 2: Deploy to Streamlit Community Cloud (Free 24/7 Hosting)
-1. Navigate to [share.streamlit.io](https://share.streamlit.io/) and log in with your GitHub account.
-2. Click **New app** and select:
-   * **Repository**: `<your-username>/lob-deep-learning-predictor`
-   * **Branch**: `main`
-   * **Main file path**: `app.py`
-3. Click **Deploy**. Within 2 minutes, your project will have a permanent public URL: `https://<your-app-name>.streamlit.app`.
-
-### Step 3: Embed in Your GitHub Pages Portfolio
-You can embed your live interactive app directly into your portfolio website using an `<iframe>`:
-
-```html
-<!-- Embed Live LOB Predictor Dashboard -->
-<div style="position: relative; width: 100%; height: 850px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-  <iframe
-    src="https://<your-app-name>.streamlit.app/?embed=true"
-    height="100%"
-    width="100%"
-    frameborder="0"
-    style="border: none;"
-    title="LOB Deep Learning Predictor">
-  </iframe>
-</div>
-```
-
-Or add an official live demo badge to your portfolio markdown:
-```markdown
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://<your-app-name>.streamlit.app)
-```
 
 ---
 
-## 6. Module Highlights & Formulas
+## 5. Module Highlights & Formulas
 
 ### Microstructural Features
 * **Mid-Price**: $P_{mid, t} = \frac{P_{ask, 1, t} + P_{bid, 1, t}}{2}$
