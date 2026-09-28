@@ -1,0 +1,35 @@
+data:
+  symbol: "btcusdt"
+  depth: 10
+  update_speed: "100ms"
+  websocket_url: "wss://stream.binance.com:9443/ws/{symbol}@depth{depth}@{update_speed}"
+  buffer_size: 10000
+  data_dir: "data"
+  raw_parquet_filename: "raw_lob_data.parquet"
+
+features:
+  rolling_window: 100        # Rolling window for Z-score normalization
+  future_horizon: 10         # k ticks into the future for mid-price smoothing
+  threshold: 0.00005         # Price change threshold for categorical label (-1, 0, 1)
+
+dataset:
+  lookback_window: 50        # Number of historical ticks per sample
+  batch_size: 256
+  train_split: 0.8
+  num_workers: 4
+
+model:
+  type: "cnn"                # "cnn" or "lstm"
+  num_classes: 3             # 0: Down (-1), 1: Stationary (0), 2: Up (1)
+  dropout: 0.2
+  hidden_dim: 64
+
+training:
+  epochs: 5
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  seed: 42
+
+backtest:
+  confidence_threshold: 0.7  # Predict prob > 0.7 to take position
+  transaction_fee_bps: 1.0   # 1 basis point (0.0001) per trade
