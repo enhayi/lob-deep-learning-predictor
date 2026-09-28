@@ -55,6 +55,13 @@ st.markdown(
 @st.cache_data
 def get_cached_dataset(num_ticks: int = 4000, seed: int = 42):
     """Generate or retrieve cached realistic LOB data."""
+    sample_path = "data/sample_lob.parquet"
+    if os.path.exists(sample_path):
+        try:
+            import pyarrow.parquet as pq
+            return pq.read_table(sample_path).to_pandas()
+        except Exception:
+            pass
     return generate_synthetic_lob_dataset(num_ticks=num_ticks, seed=seed)
 
 
